@@ -1,0 +1,861 @@
+/* Retro Blockbuster Theme */
+@import url('https://fonts.googleapis.com/css2?family=VT323&family=Permanent+Marker&display=swap');
+
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'VT323', monospace;
+  letter-spacing: 1px;
+}
+
+body {
+  background-color: #000;
+  color: white;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* VHS Effects */
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.15),
+    rgba(0, 0, 0, 0.15) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+  pointer-events: none;
+  z-index: 100;
+}
+
+.vhs-effect {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    transparent 50%,
+    rgba(0, 0, 0, 0.3) 50%
+  );
+  background-size: 100% 4px;
+  pointer-events: none;
+  z-index: 101;
+  opacity: 0.2;
+}
+
+.tracking-bar {
+  position: absolute;
+  width: 100%;
+  height: 20px;
+  background-color: rgba(255, 255, 255, 0.1);
+  top: 40%;
+  left: 0;
+  filter: blur(2px);
+  opacity: 0;
+  animation: tracking 12s infinite;
+  pointer-events: none;
+  z-index: 102;
+}
+
+@keyframes tracking {
+  0% {
+    opacity: 0;
+    transform: translateY(-100vh);
+  }
+  5% {
+    opacity: 0.7;
+  }
+  6% {
+    opacity: 0.2;
+  }
+  8% {
+    opacity: 0.7;
+    transform: translateY(100vh);
+  }
+  10% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.static-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><filter id="noiseFilter"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23noiseFilter)" opacity="0.2"/></svg>');
+  pointer-events: none;
+  z-index: 103;
+  opacity: 0.05;
+}
+
+/* Sticky Header - Cartoon Network Style */
+.sticky-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: #0033A0;
+  padding: 8px 15px;
+  border-bottom: 5px solid #FEE233;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
+}
+
+.cartoon-style {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.cartoon-style .logo-container {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  flex: 0 0 auto;
+}
+
+.cartoon-style .logo {
+  font-size: 28px;
+  margin-right: 8px;
+  text-shadow: 2px 2px 0 #001250, -2px -2px 0 #4978FF;
+  letter-spacing: 1px;
+  font-family: 'Permanent Marker', cursive;
+}
+
+.cartoon-style .tag-badge {
+  background-color: #FEE233;
+  color: #0033A0;
+  font-size: 12px;
+  padding: 2px 8px;
+  border-radius: 20px;
+  font-weight: bold;
+  transform: rotate(-5deg);
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.3);
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {transform: rotate(-5deg) translateY(0);}
+  40% {transform: rotate(-5deg) translateY(-5px);}
+  60% {transform: rotate(-5deg) translateY(-2px);}
+}
+
+.cartoon-style .nav-items {
+  display: flex;
+  margin: 0;
+  background-color: #001e5c;
+  border-radius: 20px;
+  padding: 5px 10px;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.cartoon-style .nav-item {
+  margin: 0 8px;
+  position: relative;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.2s;
+}
+
+.cartoon-style .nav-item:hover {
+  color: #FEE233;
+  transform: scale(1.1);
+  text-shadow: 0 0 5px rgba(254, 226, 51, 0.5);
+}
+
+.cartoon-style .search-container {
+  margin: 0;
+  width: auto;
+  flex: 0 0 auto;
+  max-width: 250px;
+}
+
+.cartoon-style .search-bar {
+  height: 30px;
+  padding: 5px 15px;
+  font-size: 14px;
+  border: 3px solid #FEE233;
+  background-color: #0033A0;
+  border-radius: 15px;
+  color: white;
+}
+
+.cartoon-style .search-bar::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Media query for small screens */
+@media (max-width: 768px) {
+  .cartoon-style {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .cartoon-style .search-container {
+    width: 100%;
+    max-width: none;
+  }
+  
+  .cartoon-style .nav-items {
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}
+
+/* Main Content */
+main {
+  padding: 30px 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.store-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #111;
+  opacity: 0.8;
+  z-index: -1;
+  box-shadow: inset 0 0 100px rgba(0, 51, 160, 0.3);
+}
+
+/* Section Header */
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  background-color: #0033A0;
+  padding: 5px 15px;
+  border-radius: 5px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+.section-title {
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.5);
+}
+
+.view-all {
+  color: #FEE233;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+/* Movie Shelf */
+.store-section {
+  margin-bottom: 40px;
+  position: relative;
+  overflow: visible;
+}
+
+.shelf-container {
+  position: relative;
+  margin-bottom: 50px;
+  overflow: visible;
+}
+
+.shelf {
+  display: flex;
+  overflow-x: auto;
+  padding: 70px 30px 70px;
+  position: relative;
+  gap: 0px;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  perspective: none;
+  margin: 20px 0;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.shelf::-webkit-scrollbar {
+  display: none;
+}
+
+/* Shelf styling */
+.shelf::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 15px;
+  background-color: #5d4037;
+  border-radius: 5px;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
+}
+
+.aisle-label {
+  position: absolute;
+  left: -30px;
+  top: 50%;
+  transform: translateY(-50%) rotate(-90deg);
+  background-color: #FEE233;
+  color: #0033A0;
+  padding: 5px 10px;
+  font-weight: bold;
+  font-size: 16px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  white-space: nowrap;
+  z-index: 5;
+}
+
+/* VHS/DVD Case */
+.movie-case {
+  min-width: 120px;
+  width: 120px;
+  height: 180px;
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  cursor: pointer;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  transform: rotateY(25deg) rotateX(10deg);
+  margin: 0 -15px;
+  /* Add position detection for hover behavior */
+  --hover-direction: 1;
+  /* Add a positioning context for container */
+  transform-origin: center;
+}
+
+/* Add data attributes for position detection */
+.movie-case[data-position="start"] {
+  --hover-direction: 1;
+  transform-origin: left center;
+}
+
+.movie-case[data-position="middle"] {
+  --hover-direction: 0;
+  transform-origin: center;
+}
+
+.movie-case[data-position="end"] {
+  --hover-direction: -1;
+  transform-origin: right center;
+}
+
+.shelf .movie-case:first-child {
+  margin-left: 0;
+}
+
+.movie-case:hover {
+  /* Adjust transformation based on position */
+  transform: translateY(-50px) translateX(calc(var(--hover-direction) * 20px)) scale(1.5);
+  z-index: 100;
+}
+
+/* Adjust how the cases open depending on position */
+.movie-case[data-position="start"]:hover .case-cover {
+  transform: rotateY(-160deg); /* Less rotation for start items */
+}
+
+.movie-case[data-position="end"]:hover .case-cover {
+  transform: rotateY(-160deg); /* Less rotation for end items */
+}
+
+/* Case cover (outside) */
+.case-cover {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #0033A0;
+  border: 4px solid #000;
+  border-radius: 3px;
+  box-shadow: -3px 3px 5px rgba(0, 0, 0, 0.3);
+  transform-origin: left center;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  z-index: 2;
+  overflow: hidden;
+}
+
+.movie-case:hover .case-cover {
+  transform: rotateY(-180deg);
+  box-shadow: -15px 10px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* Left page/cover */
+.case-left-side {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background-color: #111;
+  border: 4px solid #000;
+  border-radius: 3px;
+  z-index: 0;
+  transform-origin: right center;
+  transform: rotateY(180deg);
+  backface-visibility: hidden;
+  /* More visible texture */
+  background-image: linear-gradient(45deg, #0c0c0c 25%, #151515 25%, #151515 50%, #0c0c0c 50%, #0c0c0c 75%, #151515 75%, #151515 100%);
+  background-size: 10px 10px;
+}
+
+/* Additional styling to ensure inside content stays visible */
+.case-inside {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #111;
+  border: 4px solid #000;
+  border-radius: 3px;
+  z-index: 1;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* Ensure content stays inside boundaries */
+  overflow: hidden;
+}
+
+.movie-inside {
+  color: white;
+  text-align: center;
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  z-index: 2; /* Ensure content stays above disc */
+}
+
+/* Movie disc styling - proper positioning */
+.movie-disc {
+  width: 70px;
+  height: 70px;
+  background: radial-gradient(circle, #333 0%, #111 100%);
+  border-radius: 50%;
+  position: absolute;
+  bottom: 10px;  /* Position at bottom instead of top */
+  left: 50%;
+  transform: translate(-50%, 50%) scale(0);  /* Hidden initially, adjusted for bottom positioning */
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  transition: all 0.5s ease;
+  z-index: 1;  /* Lower z-index to stay behind text */
+  opacity: 0;
+}
+
+/* Disc center hole */
+.movie-disc::after {
+  content: "";
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  background-color: #222;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Disc shimmer effect */
+.movie-disc::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, transparent 45%, rgba(255,255,255,0.1) 50%, transparent 55%);
+  background-size: 200% 200%;
+  border-radius: 50%;
+  animation: shine 3s infinite linear;
+}
+
+/* Show disc on case hover with subtle peek */
+.movie-case:hover .movie-disc {
+  opacity: 1;
+  transform: translate(-50%, 30%) scale(1);  /* Peek out the bottom instead of top */
+}
+
+/* Change disc color on hover */
+.movie-disc:hover {
+  background: radial-gradient(circle, #FEE233 0%, #B8860B 100%);
+  cursor: pointer;
+  transform: translate(-50%, 30%) rotate(30deg) scale(1);  /* Updated to match bottom positioning */
+}
+
+/* Update movie description to ensure it stays above the disc */
+.movie-description {
+  font-size: 10px;
+  margin-top: 0;  
+  margin-bottom: 35px;  /* Leave space for the peeking disc at bottom */
+  color: #ddd;
+  text-align: left;
+  position: relative;
+  z-index: 2;  /* Higher z-index to stay in front of disc */
+}
+
+/* Ensure strong title is also above disc */
+.inside-title {
+  position: relative;
+  z-index: 2;
+  margin-bottom: 10px;
+}
+
+/* Movie cover */
+.movie-cover {
+  width: 100%;
+  height: 120px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  margin-bottom: 3px;
+  overflow: hidden;
+}
+
+/* Adding color backgrounds for movie covers */
+.movie-cover.red { background-color: #E50914; }
+.movie-cover.blue { background-color: #2962FF; }
+.movie-cover.green { background-color: #00C853; }
+.movie-cover.purple { background-color: #AA00FF; }
+.movie-cover.orange { background-color: #FF6F00; }
+
+/* Adding the blockbuster label styling */
+.movie-cover::after {
+  content: "";
+  position: absolute;
+  top: 8px;
+  left: 0;
+  right: 0;
+  height: 40px;
+  background-color: #0033A0;
+  border-top: 1px solid rgba(255,255,255,0.3);
+  border-bottom: 1px solid rgba(255,255,255,0.3);
+  z-index: 1;
+}
+
+.movie-cover::before {
+  content: attr(data-title);
+  position: absolute;
+  top: 15px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  color: #FEE233;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  z-index: 2;
+  transform: scaleY(1.4);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0 5px;
+}
+
+/* Movie info */
+.movie-info {
+  padding: 5px;
+  text-align: center;
+  position: relative;
+  z-index: 3;
+}
+
+.movie-title {
+  font-size: 14px;
+  font-weight: bold;
+  color: white;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.movie-year {
+  font-size: 12px;
+  color: #FEE233;
+}
+
+.movie-rating {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background-color: #FEE233;
+  color: #0033A0;
+  font-size: 12px;
+  padding: 2px 5px;
+  border-radius: 3px;
+  font-weight: bold;
+  z-index: 3;
+}
+
+.price-tag {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  background-color: #ff3d00;
+  color: white;
+  font-size: 12px;
+  padding: 2px 5px;
+  border-radius: 3px;
+  font-weight: bold;
+  transform: rotate(-5deg);
+  z-index: 3;
+}
+
+/* Membership Card */
+.membership-card {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #0033A0;
+  border: 2px solid #FEE233;
+  border-radius: 8px;
+  padding: 10px;
+  color: white;
+  font-size: 14px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.user-icon {
+  width: 30px;
+  height: 30px;
+  background-color: #FEE233;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0033A0;
+  font-weight: bold;
+}
+
+.user-name {
+  font-weight: bold;
+}
+
+/* Return Box */
+.return-box {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #ff3d00;
+  color: white;
+  padding: 15px;
+  border-radius: 10px;
+  font-size: 18px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  z-index: 10;
+  border: 2px solid #fff;
+  animation: wiggle 5s infinite;
+}
+
+@keyframes wiggle {
+  0%, 90%, 100% {
+    transform: rotate(0);
+  }
+  92% {
+    transform: rotate(5deg);
+  }
+  94% {
+    transform: rotate(-5deg);
+  }
+  96% {
+    transform: rotate(3deg);
+  }
+  98% {
+    transform: rotate(-3deg);
+  }
+}
+
+/* Updated mascot styles for smoother movement */
+.clapperboard-mascot {
+  position: fixed;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.3));
+  will-change: transform;
+  pointer-events: none; /* Let clicks pass through */
+  transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1); /* Smoother, slightly bouncy transition */
+}
+
+.clapperboard {
+  width: 80px;
+  height: 70px;
+  position: relative;
+  cursor: pointer;
+  transform-origin: bottom center;
+  animation: mascotFloat 30s ease-in-out infinite; /* Much slower animation */
+}
+
+.clapper-top {
+  width: 80px;
+  height: 25px;
+  background-color: #222;
+  border-radius: 4px 4px 0 0;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 2px 0;
+  border: 2px solid white;
+  border-bottom: none;
+}
+
+.clapper-stripe {
+  height: 5px;
+  background: repeating-linear-gradient(
+    90deg,
+    white,
+    white 10px,
+    black 10px,
+    black 20px
+  );
+}
+
+.clapper-bottom {
+  width: 80px;
+  height: 45px;
+  background-color: #444;
+  border-radius: 0 0 4px 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid white;
+  border-top: none;
+}
+
+.mascot-face {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 60px;
+}
+
+.mascot-eye {
+  width: 12px;
+  height: 12px;
+  background-color: white;
+  border-radius: 50%;
+  margin: 0 6px;
+  position: relative;
+}
+
+.mascot-eye:after {
+  content: "";
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background-color: black;
+  border-radius: 50%;
+  top: 3px;
+  left: 3px;
+}
+
+.mascot-smile {
+  width: 30px;
+  height: 15px;
+  border-radius: 0 0 15px 15px;
+  border: 3px solid white;
+  border-top: none;
+  margin-top: 5px;
+}
+
+.speech-bubble {
+  background-color: white;
+  border-radius: 15px;
+  padding: 8px 15px;
+  margin-top: 15px;
+  position: relative;
+  font-size: 0.9rem;
+  max-width: 180px;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  animation: bubblePulse 45s ease-in-out infinite; /* Much slower animation */
+  min-width: 140px;
+}
+
+.speech-bubble:after {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 0 10px 10px;
+  border-style: solid;
+  border-color: transparent transparent white;
+}
+
+@keyframes bubblePulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.01); } /* More subtle scaling */
+}
+
+@keyframes mascotFloat {
+  0%, 100% { transform: rotate(-0.5deg); }
+  50% { transform: rotate(0.5deg); } /* More subtle rotation */
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .logo {
+    font-size: 32px;
+  }
+  
+  .aisle-label {
+    display: none;
+  }
+  
+  .membership-card {
+    display: none;
+  }
+  
+  .return-box {
+    bottom: 70px;
+  }
+}
+
+@media (max-width: 576px) {
+  .search-bar {
+    font-size: 18px;
+    padding: 12px 15px;
+  }
+  
+  .movie-case {
+    min-width: 100px;
+    width: 100px;
+    height: 160px;
+  }
+  
+  .movie-cover {
+    height: 100px;
+  }
+  
+  .clapperboard-mascot {
+    display: none;
+  }
+}
