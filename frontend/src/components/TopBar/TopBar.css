@@ -1,0 +1,27 @@
+.top-bar {
+  background-color: #1A1A1A;
+  color: white;
+  padding: 10px;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+.top-bar::before {
+  content: '🎬';
+  position: absolute;
+  left: 20px;
+  font-size: 1.5rem;
+}
+
+.top-bar h1 {
+  color: #FFD700; /* Golden yellow */
+  margin: 0;
+  font-family: 'Bebas Neue', cursive;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+} 
